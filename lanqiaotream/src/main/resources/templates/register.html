@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中国梦想游-会员注册页</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var wweya_li =$("div.tab_menu ul li");
+            wweya_li.click(function(){
+                $(this).addClass("selected")
+                    .siblings().removeClass("selected");
+                var index =  wweya_li.index(this);
+                $("div.tab_box > div")
+                    .eq(index).show(100)
+                    .siblings().hide();
+            }).hover(function(){
+                $(this).addClass("hover");
+            },function(){
+                $(this).removeClass("hover");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="b_wrap">
+    <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a>  >> <a th:href="@{/register}">注册</a></div>
+    <div class="regin_w clearfix">
+        <div class="regin_con">
+            <div class="regin">
+                <div class="tab_menu regin_menu">
+                    <ul class="regin_ul">
+                        <li class="selected">注册</li>
+                    </ul>
+                </div>
+                <div class="tab_box">
+                    <div class="regin_tw">
+                        <form class="layui-form" method="post" action="/register">
+                            <table width="650" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="62">用户名：</td>
+                                    <td width="588"><input class="rg_in" type="text" id="userName" name="userName" value="" placeholder="请输入用户名"/>
+                                        <font color="red">*必填字段</font> </td>
+                                </tr>
+                                <tr>
+                                    <td>登录密码：</td>
+                                    <td><input class="rg_in" type="password" id="password" name="password" value="" placeholder="请输入密码"/>
+                                        <font color="red">*必填字段</font> </td>
+                                </tr>
+                                <tr>
+                                    <td>确认密码：</td>
+                                    <td><input class="rg_in" type="password" id="checkPassword" name="checkPassword" value="" placeholder="请输入确认密码"/>
+                                        <font color="red">*必填字段</font> </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td><input type="checkbox" id="checkbox" value="ok"/> 愿意接受中国梦想游会员协议 <font color="red">*必选</font> </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td><button type="submit" ><img src="images/agree_b.jpg"/></button></td>
+                                </tr>·
+                                <tr th:if="${message!=null}">
+                                    <td>&nbsp;</td>
+                                    <td >
+                                        <span th:text="${message}" style="color: red"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="hide regin_tw">dhgjfd</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
